@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: head('Admin Dashboard')}"></head>
+
+<body>
+
+	<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+	<div class="container mt-5">
+
+		<h2 class="page-title">
+
+			Admin Dashboard
+
+		</h2>
+
+		<div class="row g-4">
+
+			<div class="col-md-4">
+
+				<div class="card dashboard-card">
+
+					<div class="card-body text-center">
+
+						<i class="bi bi-chat-left-text dashboard-icon"></i>
+
+						<h5>Total Feedback</h5>
+
+						<h2 th:text="${feedbackCount}">0</h2>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="col-md-4">
+
+				<div class="card dashboard-card">
+
+					<div class="card-body text-center">
+
+						<i class="bi bi-people-fill dashboard-icon"></i>
+
+						<h5>Total Users</h5>
+
+						<h2 th:text="${userCount}">0</h2>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="col-md-4">
+
+				<a th:href="@{/admin/feedbacks}">
+
+					<div class="card dashboard-card">
+
+						<div class="card-body text-center">
+
+							<i class="bi bi-table dashboard-icon"></i>
+
+							<h5>
+
+								Manage Feedback
+
+							</h5>
+
+						</div>
+
+					</div>
+
+				</a>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+
+</html>

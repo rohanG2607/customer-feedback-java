@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: head('Register')}"></head>
+
+<body>
+
+	<div class="container auth-container">
+
+		<div class="auth-card">
+
+			<div class="text-center mb-4">
+
+				<i class="bi bi-person-plus-fill auth-icon"></i>
+
+				<h2>Create Account</h2>
+
+			</div>
+
+			<form th:action="@{/register}" th:object="${user}" method="post">
+
+				<div class="mb-3">
+
+					<label>Full Name</label>
+
+					<input class="form-control" th:field="*{fullName}">
+
+					<small class="text-danger" th:errors="*{fullName}">
+					</small>
+
+				</div>
+
+				<div class="mb-3">
+
+					<label>Username</label>
+
+					<input class="form-control" th:field="*{username}">
+
+					<small class="text-danger" th:errors="*{username}">
+					</small>
+
+				</div>
+
+				<div class="mb-3">
+
+					<label>Email</label>
+
+					<input class="form-control" th:field="*{email}">
+
+					<small class="text-danger" th:errors="*{email}">
+					</small>
+
+				</div>
+
+				<div class="mb-3">
+
+					<label>Password</label>
+
+					<input class="form-control" type="password" th:field="*{password}">
+
+					<small class="text-danger" th:errors="*{password}">
+					</small>
+
+				</div>
+
+				<button class="btn btn-primary w-100">
+
+					Register
+
+				</button>
+
+			</form>
+
+			<hr>
+
+			<p class="text-center">
+
+				Already have an account?
+
+				<a th:href="@{/login}">
+					Login
+				</a>
+
+			</p>
+
+		</div>
+
+	</div>
+
+	<div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+
+</html>

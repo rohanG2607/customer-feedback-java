@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: head('Dashboard')}"></head>
+
+<body>
+
+	<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+	<div class="container mt-5">
+
+		<h2 class="page-title">
+			<div class="alert alert-success"
+			     th:if="${success}"
+			     th:text="${success}">
+			</div>
+
+			Welcome,
+
+			<span th:text="${user.fullName}">
+			</span>
+
+		</h2>
+
+		<div class="row g-4 mt-3">
+
+			<div class="col-md-6" th:if="${!hasFeedback}">
+
+				<a th:href="@{/feedback/add}">
+
+					<div class="card dashboard-card">
+
+						<div class="card-body text-center">
+
+							<i class="bi bi-chat-left-text dashboard-icon"></i>
+
+							<h4>
+
+								Add Feedback
+
+							</h4>
+
+						</div>
+
+					</div>
+
+				</a>
+
+			</div>
+
+			<div class="col-md-6" th:if="${hasFeedback}">
+
+				<a th:href="@{/feedback/edit}">
+
+					<div class="card dashboard-card">
+
+						<div class="card-body text-center">
+
+							<i class="bi bi-pencil-square dashboard-icon"></i>
+
+							<h4>
+
+								Edit Feedback
+
+							</h4>
+
+						</div>
+
+					</div>
+
+				</a>
+
+			</div>
+
+			<div class="col-md-6">
+
+				<form th:action="@{/logout}" method="post">
+
+					<button class="card dashboard-card w-100">
+
+						<div class="card-body text-center">
+
+							<i class="bi bi-box-arrow-right dashboard-icon"></i>
+
+							<h4>
+
+								Logout
+
+							</h4>
+
+						</div>
+
+					</button>
+
+				</form>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+
+</html>

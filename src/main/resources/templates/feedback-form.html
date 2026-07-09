@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: head(${isEdit} ? 'Edit Feedback' : 'Add Feedback')}"></head>
+
+<body>
+
+	<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+	<div class="container feedback-container">
+
+		<div class="card auth-card mt-5">
+
+			<div class="text-center mb-4">
+
+				<i class="bi bi-chat-left-text-fill auth-icon"></i>
+
+				<h2 th:text="${isEdit} ? 'Edit Feedback' : 'Submit Feedback'"></h2>
+
+			</div>
+
+			<form th:action="@{${action}}" th:object="${feedback}" method="post">
+
+				<div class="mb-4">
+
+					<label>Title</label>
+
+					<input class="form-control" th:field="*{title}" placeholder="Feedback title">
+
+					<small class="text-danger" th:errors="*{title}">
+					</small>
+
+				</div>
+
+				<div class="mb-4">
+
+					<label>Description</label>
+
+					<textarea class="form-control" rows="7" th:field="*{description}" placeholder="Write your feedback">
+                </textarea>
+
+					<small class="text-danger" th:errors="*{description}">
+					</small>
+
+				</div>
+
+				<button class="btn btn-primary w-100" type="submit"
+					th:text="${isEdit} ? 'Update Feedback' : 'Submit Feedback'">
+				</button>
+
+			</form>
+
+		</div>
+
+	</div>
+
+	<div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+
+</html>
